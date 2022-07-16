@@ -1,5 +1,5 @@
 import { MDBContainer } from "mdb-react-ui-kit";
-import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./common_components/Footer";
 import Header from "./common_components/Header";
@@ -11,22 +11,53 @@ import ProdcutDetails from "./pages/ProductDetails";
 import Search from "./pages/Search";
 import Shop from "./pages/Shop";
 import Account from "./pages/User/Account";
+import SignUp from "./pages/User/SignUp";
+import Alert from "./common_components/Alert";
+import PageNotFound from "./pages/Error/PageNotFound";
+import ServerErrorPage from "./pages/Error/ServerErrorPage";
+import Success from "./pages/Payment/Success";
+import Fail from "./pages/Payment/Fail";
 
 function App() {
   return (
     <div className="App">
-      {/* header */}
-      <Header />
-      <MDBContainer className="my-5">
-        {/* <Home /> */}
-        {/* <Shop /> */}
-        {/* <ProdcutDetails/> */}
-        {/* <Search/> */}
-        {/* <Cart/> */}
-        {/* <OrderHistory/> */}
-        {/* <OrderDetails/> */}
-        <Account/>
-      </MDBContainer>
+      <BrowserRouter>
+        {/* header */}
+        <Header />
+        <MDBContainer className="my-5">
+          {/* alert */}
+          <Alert />
+          <Routes>
+            {/* Home */}
+            <Route path="/" element={<Home />} />
+            {/* Shop */}
+            <Route path="/shop" element={<Shop />} />
+            {/* ProdcutDetails */}
+            <Route path="/details/:id" element={<ProdcutDetails />} />
+            {/* Search */}
+            <Route path="/search" element={<Search />} />
+            {/* Cart */}
+            <Route path="/cart" element={<Cart />} />
+            {/* OrderHistory */}
+            <Route path="/order-history" element={<OrderHistory />} />
+            {/* OrderDetails */}
+            <Route path="/order-details/:id" element={<OrderDetails />} />
+            {/* SignUp */}
+            <Route path="/sign-up" element={<SignUp />} />
+            {/* Account */}
+            <Route path="/my-account" element={<Account />} />
+            {/* Success */}
+            <Route path="/payment-success" element={<Success />} />
+            {/* Fail */}
+            <Route path="/payment-fail" element={<Fail />} />
+            {/* ServerErrorPage */}
+            <Route path="/server-error" element={<ServerErrorPage />} />
+            {/* PageNotFound */}
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </MDBContainer>
+      </BrowserRouter>
+
       {/* footer */}
       <Footer />
     </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Header = () => {
   const [commonRoutes, setCommonRoutes] = useState([
     {
@@ -8,19 +8,19 @@ const Header = () => {
     },
     {
       name: "products",
-      link: "/",
+      link: "/shop",
     },
     {
       name: "search",
-      link: "/",
+      link: "/search",
     },
     {
       name: "cart",
-      link: "/",
+      link: "/cart",
     },
     {
       name: "my account",
-      link: "/",
+      link: "/my-account",
     },
   ]);
   return (
@@ -30,9 +30,9 @@ const Header = () => {
         {commonRoutes.map((i) => {
           return (
             <h5>
-              <a href="" className="mx-3 text-capitalize">
+              <Link to={i.link} className="mx-3 text-capitalize text-dark">
                 {i.name}
-              </a>
+              </Link>
             </h5>
           );
         })}
