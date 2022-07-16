@@ -1,56 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { MDBContainer } from "mdb-react-ui-kit";
+import React from "react";
+import "./App.css";
+import Footer from "./common_components/Footer";
+import Header from "./common_components/Header";
+import Cart from "./pages/Cart";
+import Home from "./pages/Home";
+import OrderDetails from "./pages/OrderDetails";
+import OrderHistory from "./pages/OrderHistory";
+import ProdcutDetails from "./pages/ProductDetails";
+import Search from "./pages/Search";
+import Shop from "./pages/Shop";
+import Account from "./pages/User/Account";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+      {/* header */}
+      <Header />
+      <MDBContainer className="my-5">
+        {/* <Home /> */}
+        {/* <Shop /> */}
+        {/* <ProdcutDetails/> */}
+        {/* <Search/> */}
+        {/* <Cart/> */}
+        {/* <OrderHistory/> */}
+        {/* <OrderDetails/> */}
+        <Account/>
+      </MDBContainer>
+      {/* footer */}
+      <Footer />
     </div>
   );
 }
