@@ -8,7 +8,6 @@ import Home from "./pages/Home";
 import OrderDetails from "./pages/OrderDetails";
 import OrderHistory from "./pages/OrderHistory";
 import ProdcutDetails from "./pages/ProductDetails";
-import Search from "./pages/Search";
 import Shop from "./pages/Shop";
 import Account from "./pages/User/Account";
 import SignUp from "./pages/User/SignUp";
@@ -17,6 +16,7 @@ import PageNotFound from "./pages/Error/PageNotFound";
 import ServerErrorPage from "./pages/Error/ServerErrorPage";
 import Success from "./pages/Payment/Success";
 import Fail from "./pages/Payment/Fail";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -34,8 +34,6 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             {/* ProdcutDetails */}
             <Route path="/details/:id" element={<ProdcutDetails />} />
-            {/* Search */}
-            <Route path="/search" element={<Search />} />
             {/* Cart */}
             <Route path="/cart" element={<Cart />} />
             {/* OrderHistory */}
@@ -46,6 +44,8 @@ function App() {
             <Route path="/sign-up" element={<SignUp />} />
             {/* Account */}
             <Route path="/my-account" element={<Account />} />
+            {/* checkout */}
+            <Route path="/checkout" element={<Checkout />} />
             {/* Success */}
             <Route path="/payment-success" element={<Success />} />
             {/* Fail */}

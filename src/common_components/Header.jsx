@@ -11,10 +11,6 @@ const Header = () => {
       link: "/shop",
     },
     {
-      name: "search",
-      link: "/search",
-    },
-    {
       name: "cart",
       link: "/cart",
     },
