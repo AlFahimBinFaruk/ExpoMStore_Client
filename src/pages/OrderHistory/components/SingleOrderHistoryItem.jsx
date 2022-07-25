@@ -1,14 +1,12 @@
-const SingleOrderHistoryItem = ({
-  id = "tst",
-  total = 33,
-  paymentStatus = "pending",
-  orderStatus = "pending",
-}) => {
+import { Link } from "react-router-dom";
+const SingleOrderHistoryItem = ({ _id, total, paymentStatus, orderStatus }) => {
   return (
     <tr className="verticle-align-middle text-dark" role="button">
       {/* order id */}
       <td>
-        <span className="fw-bold">Order Id:{id}</span>
+        <Link to={`/order-details/${_id}`}>
+          <span className="fw-bold">Order Id:{_id}</span>
+        </Link>
       </td>
       {/* price */}
       <td>

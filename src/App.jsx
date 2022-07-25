@@ -32,6 +32,8 @@ function App() {
             <Route path="/" element={<Home />} />
             {/* Shop */}
             <Route path="/shop" element={<Shop />} />
+            {/* Shop  under specific category */}
+            <Route path="/shop/:categoryId" element={<Shop />} />
             {/* ProdcutDetails */}
             <Route path="/details/:id" element={<ProdcutDetails />} />
             {/* Cart */}

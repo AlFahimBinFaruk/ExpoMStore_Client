@@ -17,11 +17,11 @@ const initialState = {
  */
 export const getMyOrderList = createAsyncThunk(
   "order/getMyOrderList",
-  async (pageNo, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       //get the user token ..
       const token = thunkAPI.getState().user.userInfo.token;
-      return await orderService.getMyOrderList(pageNo, token);
+      return await orderService.getMyOrderList(token);
     } catch (error) {
       const orderMessage =
         (error.response &&

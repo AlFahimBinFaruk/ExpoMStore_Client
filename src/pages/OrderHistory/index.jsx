@@ -1,9 +1,35 @@
 import { MDBCol, MDBTable, MDBTableBody } from "mdb-react-ui-kit";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getMyOrderList, reset } from "../../features/order/orderSlice";
+import { useEffect } from "react";
 import SingleOrderHistoryItem from "./components/SingleOrderHistoryItem";
+import LoadingSpinner from "../../common_components/LoadingSpinner";
+import ServerErrorPage from "../Error/ServerErrorPage";
 
 const OrderHistory = () => {
-  const [count, setcount] = useState([1, 2, 3, 4, 5, 6]);
+  const dispatch = useDispatch();
+  //get initial state from product store
+  const { orderList, isOrderLoading, isOrderError } = useSelector(
+    (state) => state.order
+  );
+
+  //by default one time
+  useEffect(() => {
+    dispatch(getMyOrderList());
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch]);
+
+  //if there are error
+  if (isOrderError) {
+    return <ServerErrorPage />;
+  }
+
+  //if the page is loading
+  if (isOrderLoading) {
+    return <LoadingSpinner />;
+  }
   return (
     <MDBCol size="12" lg="8" className="mx-auto">
       <div className="mb-5 text-center">
@@ -13,9 +39,13 @@ const OrderHistory = () => {
       <MDBTable>
         {/* table body */}
         <MDBTableBody>
-          {count.map((i) => {
-            return <SingleOrderHistoryItem />;
-          })}
+          {orderList ? (
+            orderList.map((i, index) => {
+              return <SingleOrderHistoryItem {...i} key={index} />;
+            })
+          ) : (
+            <p>Order history is empty!</p>
+          )}
         </MDBTableBody>
       </MDBTable>
     </MDBCol>

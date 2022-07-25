@@ -1,17 +1,19 @@
 import { MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
 
-const SingleProductCard = () => {
+const SingleProductCard = ({ _id, title, thumbnail, price }) => {
+  let navigate = useNavigate();
   return (
-    <MDBCard className="h-100 shadow" role="button">
-      <MDBCardImage
-        src="https://mdbootstrap.com/img/new/standard/nature/184.webp"
-        position="top"
-        alt="..."
-      />
+    <MDBCard
+      className="h-100 shadow"
+      role="button"
+      onClick={() => navigate(`/details/${_id}`)}
+    >
+      <MDBCardImage src={thumbnail} position="top" alt="..." />
       <MDBCardBody>
-        <h6>Steinway Upright K-132</h6>
+        <h6>{title}</h6>
         <p>
-          <small>$123</small>
+          <small>${price}</small>
         </p>
       </MDBCardBody>
     </MDBCard>

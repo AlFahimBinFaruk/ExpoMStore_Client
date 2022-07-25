@@ -3,14 +3,14 @@ import axios from "axios";
 const API_URL = `${process.env.REACT_APP_BASE_URL}/api/order`;
 
 //get My OrderList
-const getMyOrderList = async (pageNo, token) => {
+const getMyOrderList = async (token) => {
   const config = {
     headers: {
       authorization: `Bearer ${token}`,
     },
   };
   const response = await axios.get(
-    `${API_URL}/my-order-history?pageNo=${pageNo}`,
+    `${API_URL}/my-order-history`,
     config
   );
 

@@ -17,7 +17,7 @@ export const getCategoryList = createAsyncThunk(
   "category/getCategoryList",
   async (pageNo, thunkAPI) => {
     try {
-      return await categoryService.getAllCategoryList(pageNo);
+      return await categoryService.getCategoryList(pageNo);
     } catch (error) {
       const categoryMessage =
         (error.response &&
