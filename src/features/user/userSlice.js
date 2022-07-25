@@ -60,7 +60,7 @@ export const userSlice = createSlice({
       .addCase(manageSignUp.fulfilled, (state, action) => {
         state.isUserLoading = false;
         state.isUserSuccess = true;
-        state.userList = action.payload;
+        state.userInfo = action.payload;
       })
       .addCase(manageSignUp.rejected, (state, action) => {
         state.isUserLoading = false;
@@ -68,7 +68,7 @@ export const userSlice = createSlice({
         state.userMessage = action.payload;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.adminInfo = null;
+        state.userInfo = null;
         state.isAdminSuccess = true;
       });
   },

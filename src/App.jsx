@@ -1,5 +1,6 @@
 import { MDBContainer } from "mdb-react-ui-kit";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./App.css";
 import Footer from "./common_components/Footer";
 import Header from "./common_components/Header";
@@ -19,6 +20,7 @@ import Fail from "./pages/Payment/Fail";
 import Checkout from "./pages/Checkout";
 
 function App() {
+  const { userInfo } = useSelector((state) => state.user);
   return (
     <div className="App">
       <BrowserRouter>
@@ -42,12 +44,19 @@ function App() {
             <Route path="/order-history" element={<OrderHistory />} />
             {/* OrderDetails */}
             <Route path="/order-details/:id" element={<OrderDetails />} />
-            {/* SignUp */}
-            <Route path="/sign-up" element={<SignUp />} />
-            {/* Account */}
-            <Route path="/my-account" element={<Account />} />
-            {/* checkout */}
-            <Route path="/checkout" element={<Checkout />} />
+            {userInfo ? (
+              <>
+                {/* Account */}
+                <Route path="/my-account" element={<Account />} />
+                {/* checkout */}
+                <Route path="/checkout" element={<Checkout />} />
+              </>
+            ) : (
+              <>
+                {/* SignUp */}
+                <Route path="/sign-up" element={<SignUp />} />
+              </>
+            )}
             {/* Success */}
             <Route path="/payment-success" element={<Success />} />
             {/* Fail */}

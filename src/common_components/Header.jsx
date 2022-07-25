@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const Header = () => {
+  const { userInfo } = useSelector((state) => state.user);
   const [commonRoutes, setCommonRoutes] = useState([
     {
       name: "categories",
@@ -13,10 +15,6 @@ const Header = () => {
     {
       name: "cart",
       link: "/cart",
-    },
-    {
-      name: "my account",
-      link: "/my-account",
     },
   ]);
   return (
@@ -32,6 +30,20 @@ const Header = () => {
             </h5>
           );
         })}
+        {/* protected routes */}
+        {userInfo ? (
+          <h5>
+            <Link to="/my-account" className="mx-3 text-capitalize text-dark">
+              my account
+            </Link>
+          </h5>
+        ) : (
+          <h5>
+            <Link to="/sign-up" className="mx-3 text-capitalize text-dark">
+              sign up
+            </Link>
+          </h5>
+        )}
       </div>
     </div>
   );
