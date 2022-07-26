@@ -18,7 +18,7 @@ const Shop = () => {
   );
   //by default one time ,and then everytime pageNo changes call it..
   useEffect(() => {
-    dispatch(getProductList({ pageNo, categoryId }));
+    dispatch(getProductList({ pageNo, categoryId:categoryId || "" }));
 
     return () => {
       dispatch(reset());

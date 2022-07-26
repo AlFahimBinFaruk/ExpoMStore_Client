@@ -8,6 +8,8 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "./index.css";
 import { AppAlertProvider } from "./contexts/alertContext";
 import firebaseApp from "./firebaseConfig";
+import { AppCartInfoProvider } from "./contexts/cartContext";
+
 const container = document.getElementById("root");
 const root = createRoot(container);
 
@@ -15,13 +17,12 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <AppAlertProvider>
-        <App />
+        <AppCartInfoProvider>
+          <App />
+        </AppCartInfoProvider>
       </AppAlertProvider>
     </Provider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

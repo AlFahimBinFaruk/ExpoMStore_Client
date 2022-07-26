@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom";
 import { getProductDetails, reset } from "../../features/product/productSlice";
 import ServerErrorPage from "../Error/ServerErrorPage";
 import { useEffect } from "react";
+import { useGlobalCartInfoContext } from "../../contexts/cartContext";
 const ProdcutDetails = () => {
   const dispatch = useDispatch();
   let { id } = useParams();
+  let { addToCart } = useGlobalCartInfoContext();
 
   //get initial state from product store
   const { productDetails, isProductLoading, isProductError } = useSelector(
@@ -57,7 +59,12 @@ const ProdcutDetails = () => {
               <h6 className="price">${price}</h6>
 
               {/* add to cart btn */}
-              <MDBBtn className="mt-3">Add to cart</MDBBtn>
+              <MDBBtn
+                className="mt-3"
+                onClick={() => addToCart(_id, title, price, thumbnail)}
+              >
+                Add to cart
+              </MDBBtn>
             </MDBCol>
           </MDBRow>
           {/* desc */}

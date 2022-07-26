@@ -1,15 +1,10 @@
-//MDB
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBBtn } from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
+import { useGlobalCartInfoContext } from "../../../contexts/cartContext";
 
 const CartSummary = () => {
-  //   const calculateSummary = () => {
-  //     let total = 0;
-  //     cartItemListDetails.map((i) => {
-  //       total += Number(i.price) * Number(i.qty);
-  //     });
-  //     setSubtotal(total)
-  //   };
-
+  let { subTotal } = useGlobalCartInfoContext();
+  let navigate = useNavigate();
   return (
     <MDBCard className="shadow rounded-0">
       <MDBCardBody>
@@ -20,10 +15,14 @@ const CartSummary = () => {
           <div className="d-flex justify-content-between align-items-center mt-4 text-dark">
             <p className="mb-0">Subtotal</p>
             <p className="mb-0">
-              <b>$55</b>
+              <b>${subTotal}</b>
             </p>
           </div>
-          <MDBBtn className="rounded-0 mt-2" block>
+          <MDBBtn
+            className="rounded-0 mt-2"
+            block
+            onClick={() => navigate("/checkout")}
+          >
             Proceed Checkout
           </MDBBtn>
         </div>

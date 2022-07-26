@@ -35,7 +35,7 @@ const manageCheckout = async (data, token) => {
       authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.patch(`${API_URL}/checkout`, data, config);
+  const response = await axios.post(`${API_URL}/checkout`, data, config);
 
   return response.data;
 };
